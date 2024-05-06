@@ -1,4 +1,4 @@
-// targetScope = 'subscription'
+targetScope = 'subscription'
 
 // param resourceGroupLocation string = resourceGroup().location
 param resourceGroupLocation string
