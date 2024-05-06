@@ -6,9 +6,10 @@ param resourceGroupName string
 param storageAccountName string = 'store${uniqueString(resourceGroup().id)}'
 param vnetName string = 'vnet${uniqueString(resourceGroup().id)}'
 
+var subId = '03378d13-d93f-4e73-bcb0-986d5a90f945'
 
 module baseResourceGroup 'modules/resource_groups/main.bicep' =  {
-  scope: subscription()
+  scope: subscription(subId)
   name: 'Deploy-base-RG'
   
   params: {
