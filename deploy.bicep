@@ -1,16 +1,16 @@
 targetScope= 'subscription'
 
-param resourceGroupName string = 'rg-bicep-depstack-01'
-param resourceGroupLocation string = 'eastus'
-param storageName string = 'stbicepdepstack001'
-param storageLocation string = 'eastus'
+param resourceGroupName string
+param resourceGroupLocation string
+param storageName string
+param storageLocation string
 
 // param virtualnetworkname string = 'vnet01'
 // param virtualnetworklocation string = 'eastus'
 // param subnet1Name string = 'alpha'
 // param subnet2Name string= 'beta'
 
-resource azrg01 'Microsoft.Resources/resourceGroups@2021-04-01'= {
+resource resGroup 'Microsoft.Resources/resourceGroups@2021-04-01'= {
   name: resourceGroupName
   location: resourceGroupLocation
   
@@ -19,7 +19,7 @@ resource azrg01 'Microsoft.Resources/resourceGroups@2021-04-01'= {
 //Azure Storage Account Module Deployment//
 module storageAcct 'modules/storage_account/main.bicep'  = {
   name: 'storageModule'
-  scope: azrg01
+  scope: resGroup
   params: {
     resourceGroupLocation: storageLocation
     storageAccountName: storageName
